@@ -1,0 +1,58 @@
+.application {
+  background-color: rgb(12, 206, 235);
+  padding: 10px;
+  color: bisque;
+  text-align: center;
+  border-radius: 5px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+}
+.container {
+  margin: 20px 10%;
+}
+.liInfor {
+  list-style-type: none;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgb(128, 197, 186);
+  margin: 5px;
+  padding: 5px;
+}
+.liInfor :hover {
+  background-color: rgb(61, 111, 124);
+  cursor: pointer;
+}
+.infor {
+  background-color: whitesmoke;
+  text-align: center;
+}
+.infor-body {
+  background-color: bisque;
+  padding: 10px 100px;
+  border-radius: 5px;
+}
+
+.nav {
+  display: inline-flex;
+  margin: 10px;
+}
+.fa {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 992px) {
+  .row {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
