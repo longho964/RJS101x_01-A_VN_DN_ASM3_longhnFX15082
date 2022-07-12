@@ -12,12 +12,12 @@ class Liststaff extends Component {
 
     const staffcompany = this.state.STAFFS.map((item) => {
       return (
-        <div key={item.id} className="liInfor">
+        <div key={item.id} className="staff-list">
           <Media tag="li" onClick={() => this.showInfo(item)}>
             {" "}
             <Link exact to={`/nhanvien/${item.id} `}>
               <Media body className="ml-5">
-                <img src={item.image}></img>
+                <img className="staff-list-image" src={item.image}></img>
                 <Media heading>{item.name}</Media>
               </Media>{" "}
             </Link>
@@ -25,7 +25,7 @@ class Liststaff extends Component {
         </div>
       );
     });
-    return <div className="row">{staffcompany}</div>;
+    return <div className="row-stafflist">{staffcompany}</div>;
   }
 }
 

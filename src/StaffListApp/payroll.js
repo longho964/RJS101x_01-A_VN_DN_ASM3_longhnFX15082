@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { STAFFS } from "./staffs";
-import { Link } from "react-router-dom";
 import { Media } from "reactstrap";
 
 class Payroll extends Component {
@@ -18,9 +17,9 @@ class Payroll extends Component {
     const payRoll = this.state.STAFFS.map((pay) => {
       const wage = [pay.salaryScale * 3000000 + pay.overTime * 2000000];
       return (
-        <div key={pay.id} className="liInfor">
+        <div key={pay.id} className="staff-infor">
           <Media body className="ml-5">
-            <Media heading>{pay.name}</Media>
+            <h1 className="staff-infor-name">{pay.name}</h1>
             <Media heading>Mã Nhân Viên:{pay.id}</Media>
             <Media heading>Hệ Số Lương: {pay.salaryScale}</Media>
             <Media heading>Số Ngày Làm Thêm: {pay.overTime}</Media>
@@ -31,7 +30,7 @@ class Payroll extends Component {
     });
     return (
       <div>
-        <Media list className="row">
+        <Media list className="row-department">
           {payRoll}
         </Media>
       </div>

@@ -1,27 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faYoutube,
+  faLinkedin,
+  faGoogle,
+} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faFax, faPhone } from "@fortawesome/free-solid-svg-icons";
 function Footer(props) {
   return (
     <div className="footer">
       <div className="container">
-        <div className="row1 justify-content-center">
-          <div className="col-4 offset-1 col-sm-2">
-            <h5>Links</h5>
-            <ul className="list-unstyled">
-              <li>
-                <Link to="/nhanvien">Nhân Viên</Link>
-              </li>
-              <li>
-                <Link to="phongban">Phòng Ban</Link>
-              </li>
-              <li>
-                <Link to="/bangluong">Bảng Lương</Link>
-              </li>
-            </ul>
-          </div>
+        <div className="footer-row justify-content-center">
           <div className="col-7 col-sm-5">
-            <h5>Our Address</h5>
+            <h2>Our Address</h2>
             <address>
               121, Clear Water Bay Road
               <br />
@@ -29,54 +22,44 @@ function Footer(props) {
               <br />
               HONG KONG
               <br />
-              <i className="fa fa-phone fa-lg"></i>: +852 1234 5678
+              <FontAwesomeIcon icon={faPhone} />
+              : +852 1234 5678
               <br />
-              <i className="fa fa-fax fa-lg"></i>: +852 8765 4321
+              <FontAwesomeIcon icon={faFax} />
+              : +852 8765 4321
               <br />
-              <i className="fa fa-envelope fa-lg"></i>:{" "}
-              <a href="mailto:confusion@food.net">confusion@food.net</a>
+              <FontAwesomeIcon icon={faEnvelope} />
+              <a href="mailto:confusion@food.net">: confusion@food.net</a>
             </address>
           </div>
-          <div className="col-12 col-sm-4 align-self-center">
-            <div className="text-center">
-              <a
-                className="btn btn-social-icon btn-google"
-                href="http://google.com/+"
-              >
-                <i className="fa fa-google-plus"></i>
+          <div className="icon">
+            <div className="icon-text-center">
+              <a className="icon-google" href="http://google.com/+">
+                <FontAwesomeIcon icon={faGoogle} />
               </a>
               <a
-                className="btn btn-social-icon btn-facebook"
+                className="icon-facebook"
                 href="http://www.facebook.com/profile.php?id="
               >
-                <i className="fa fa-facebook"></i>
+                <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a
-                className="btn btn-social-icon btn-linkedin"
-                href="http://www.linkedin.com/in/"
-              >
-                <i className="fa fa-linkedin"></i>
+              <a className="icon-linkedin" href="http://www.linkedin.com/in/">
+                <FontAwesomeIcon icon={faLinkedin} />
               </a>
-              <a
-                className="btn btn-social-icon btn-twitter"
-                href="http://twitter.com/"
-              >
-                <i className="fa fa-twitter"></i>
+              <a className="icon-twitter" href="http://twitter.com/">
+                <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a
-                className="btn btn-social-icon btn-google"
-                href="http://youtube.com/"
-              >
-                <i className="fa fa-youtube"></i>
+              <a className="icon-youtube" href="http://youtube.com/">
+                <FontAwesomeIcon icon={faYoutube} />
               </a>
-              <a className="btn btn-social-icon" href="mailto:">
-                <i className="fa fa-envelope-o"></i>
+              <a className="icon-mail" href="mailto:">
+                <FontAwesomeIcon icon={faEnvelope} />
               </a>
             </div>
           </div>
         </div>
         <div className=" justify-content-center">
-          <div className="col-auto">
+          <div className="footer-text">
             <p>© Copyright 2018 Ristorante Con Fusion</p>
           </div>
         </div>

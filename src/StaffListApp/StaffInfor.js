@@ -6,7 +6,11 @@ function RenderAvata({ staff }) {
   return (
     <div className="col-12 col-md-5 m-1">
       <Card>
-        <CardImg top src={staff.image} alt={staff.name}></CardImg>
+        <CardImg
+          className="staffinfor-image"
+          src={staff.image}
+          alt={staff.name}
+        ></CardImg>
       </Card>
     </div>
   );
@@ -37,7 +41,7 @@ function RenderStaffInfor({ choosenStaff }) {
 const StaffInfor = (props) => {
   if (props.staff != null)
     return (
-      <div className="row1">
+      <div className="row-staffinfor">
         <div className="col-12 col-md-5 m-1">
           <RenderAvata staff={props.staff} />
         </div>

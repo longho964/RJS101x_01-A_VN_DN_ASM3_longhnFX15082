@@ -26,22 +26,6 @@ class StaffList extends Component {
   render() {
     console.log("this.state.STAFFS", this.state.STAFFS);
 
-    // const staffcompany = this.state.STAFFS.map((item) => {
-    //   return (
-    //     <div key={item.id} className="liInfor">
-    //       <Media tag="li" onClick={() => this.showInfo(item)}>
-    //         {" "}
-    //         <Link exact to={`/nhanvien/${item.id} `}>
-    //           <Media body className="ml-5">
-    //             <img src={item.image}></img>
-    //             <Media heading>{item.name}</Media>
-    //           </Media>{" "}
-    //         </Link>
-    //       </Media>
-    //     </div>
-    //   );
-    // });
-
     const StaffDetail = (props) => {
       let { idNhanVien } = useParams();
       console.log("id nhan vien:", idNhanVien);
@@ -69,11 +53,6 @@ class StaffList extends Component {
           <Route exact path="/bangluong/*" element={<Payroll />} />
         </Routes>
 
-        {/* <div>
-          <Media list className="row">
-            {staffcompany}
-          </Media>
-        </div> */}
         <Footer />
       </div>
     );

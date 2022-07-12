@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { DEPARTMENTS } from "./staffs";
-import { Link } from "react-router-dom";
 import { Media } from "reactstrap";
 
 class Departments extends Component {
@@ -17,22 +16,17 @@ class Departments extends Component {
     console.log("try");
     const staffDepartment = this.state.DEPARTMENTS.map((depart) => {
       return (
-        <div key={depart.id} className="liInfor">
-          {/* <Media tag="li" onClick={() => this.showInfo(depart)}>
-            {" "}
-            <Link to="/staffInfor"> */}
+        <div key={depart.id} className="department">
           <Media body className="ml-5">
             <h1 heading>{depart.name}</h1>
             <Media heading>Số lượng nhân viên:{depart.numberOfStaff}</Media>
           </Media>{" "}
-          {/* </Link>
-          </Media> */}
         </div>
       );
     });
     return (
       <div>
-        <Media list className="row">
+        <Media list className="row-department">
           {staffDepartment}
         </Media>
       </div>

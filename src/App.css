@@ -5,25 +5,61 @@
   text-align: center;
   border-radius: 5px;
 }
-.row {
+.row-stafflist {
   display: grid;
   grid-template-columns: 16% 16% 16% 16% 16% 16%;
+}
+.row-staffinfor {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+.row-department {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 .container {
   margin: 20px 10%;
 }
-.liInfor {
-  list-style-type: none;
-  text-decoration: none;
+
+.department {
   text-align: center;
   border-radius: 5px;
   background-color: rgb(128, 197, 186);
   margin: 5px;
-  padding: 5px;
+  padding: 20px;
 }
-.liInfor :hover {
+.department :hover {
+  color: rgb(61, 111, 54);
+  font-size: x-large;
+}
+
+.staff-infor {
+  list-style-type: none;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: rgb(128, 197, 186);
+  margin: 5px;
+  padding-left: 30px;
+}
+.staff-infor :hover {
   background-color: rgb(61, 111, 124);
   cursor: pointer;
+}
+
+.staff-list {
+  text-align: center;
+  list-style-type: none;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: rgb(128, 197, 186);
+  margin: 5px;
+  padding: 20px;
+}
+
+.staff-infor-name {
+  color: rgb(45, 45, 42);
+  text-align: center;
+  font-size: xx-large;
 }
 .infor {
   background-color: whitesmoke;
@@ -39,20 +75,106 @@
   display: inline-flex;
   margin: 10px;
 }
-.fa {
+
+a {
   text-decoration: none;
+  color: black;
+}
+a :hover {
+  color: rgb(13, 165, 203);
+}
+
+.staffinfor-image {
+  margin: 20px;
+  border-radius: 50%;
+  width: 80%;
+}
+
+.staff-list-image {
+  border-radius: 50%;
+  width: 80%;
+}
+.footer {
+  padding: 10px;
+  margin: 20px 10px 0px 0px;
+  background-color: rgb(75, 135, 115);
+  border-radius: 5px;
+}
+.footer-row {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.footer-text {
+  text-align: center;
+}
+
+.icon {
+  padding-top: 30%;
+}
+
+.icon-text-center {
+  text-align: center;
+}
+
+.icon-google {
+  color: red;
+  font-size: xx-large;
+  margin: 5px;
+}
+
+.icon-facebook {
+  color: blue;
+  font-size: xx-large;
+  margin: 5px;
+}
+
+.icon-linkedin {
+  color: rgb(58, 66, 212);
+  font-size: xx-large;
+  margin: 5px;
+}
+
+.icon-twitter {
+  color: rgb(58, 58, 182);
+  font-size: xx-large;
+  margin: 5px;
+}
+
+.icon-youtube {
+  color: rgb(228, 31, 31);
+  font-size: xx-large;
+  margin: 5px;
+}
+
+.icon-mail {
+  color: rgb(239, 239, 242);
+  font-size: xx-large;
+  margin: 5px;
 }
 
 @media screen and (max-width: 992px) {
-  .row {
+  .row-stafflist {
     display: grid;
     grid-template-columns: 33% 33% 33%;
+  }
+  .row-department {
+    grid-template-columns: 50% 50%;
+  }
+  .row-staffinfor {
+    grid-template-columns: 33% 66%;
   }
 }
 
 @media screen and (max-width: 660px) {
-  .row {
+  .row-stafflist {
     display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .row-department {
+    grid-template-columns: 100%;
+  }
+  .row-staffinfor {
     grid-template-columns: 50% 50%;
   }
 }

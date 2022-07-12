@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import {
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-} from "reactstrap";
+import { Nav, Navbar, NavbarBrand, Collapse, NavItem } from "reactstrap";
 import { NavLink, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faIdCard,
+  faMoneyBill,
+  faPeopleGroup,
+} from "@fortawesome/free-solid-svg-icons";
 
 class Header extends Component {
   constructor(props) {
@@ -39,19 +38,22 @@ class Header extends Component {
               <Nav navbar>
                 <NavItem className="nav">
                   <NavLink className="nav-link" to="/nhanvien">
-                    <span className="fa fa-home fa-lg"></span> Nhân Viên
+                    <FontAwesomeIcon icon={faPeopleGroup} />
+                    <span className="fa fa-home fa-lg"> Nhân Viên</span>
                   </NavLink>
                 </NavItem>
 
                 <NavItem className="nav">
                   <Link className="nav-link" to="/phongban">
-                    <span className="fa fa-info fa-lg"></span> phòng Ban
+                    <FontAwesomeIcon icon={faIdCard} />
+                    <span className="fa fa-info fa-lg"> phòng Ban</span>
                   </Link>
                 </NavItem>
 
                 <NavItem className="nav">
                   <NavLink className="nav-link" to="/bangluong">
-                    <span className="fa fa-list fa-lg"></span> Bảng Lương
+                    <FontAwesomeIcon icon={faMoneyBill} />
+                    <span className="fa fa-list fa-lg"> Bảng Lương</span>
                   </NavLink>
                 </NavItem>
               </Nav>
