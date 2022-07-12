@@ -9,8 +9,9 @@ import StaffInfor from "./StaffInfor";
 import Departments from "./department";
 import Payroll from "./payroll";
 import Liststaff from "./staffList";
+import Introduction from "./introduction";
 
-class StaffList extends Component {
+class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,8 +45,8 @@ class StaffList extends Component {
       <div className="container">
         <h1 className="application"> FUNIX REACT COMPANY</h1>
         <Header />
-
         <Routes>
+          <Route exact path="/" element={<Introduction />} />
           <Route exact path="/nhanvien" element={<Liststaff />} />
           <Route path="/nhanvien/:idNhanVien" element={<StaffDetail />} />
 
@@ -59,4 +60,4 @@ class StaffList extends Component {
   }
 }
 
-export default StaffList;
+export default Layout;

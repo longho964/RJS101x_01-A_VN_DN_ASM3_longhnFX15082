@@ -1,14 +1,12 @@
 import "./App.css";
-import StaffInfor from "./StaffListApp/StaffInfor";
-import StaffList from "./StaffListApp/StaffListComponent";
+import Layout from "./StaffListApp/Layout";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <StaffList />
-        <StaffInfor />
+        <Layout />
       </div>
     </Router>
   );
