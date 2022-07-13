@@ -25,7 +25,13 @@ class Liststaff extends Component {
         </div>
       );
     });
-    return <div className="row-stafflist">{staffcompany}</div>;
+    return (
+      <div>
+        <p>Tài sản quý giá nhất của doanh nghiệp chính là:</p>
+        <h1 style={{ "text-align": "  center" }}>Nhân viên</h1>
+        <div className="row-stafflist">{staffcompany}</div>;
+      </div>
+    );
   }
 }
 

@@ -28,7 +28,7 @@
   margin: 5px;
   padding: 20px;
 }
-.department :hover {
+.department:hover {
   color: rgb(61, 111, 54);
   font-size: x-large;
 }
@@ -39,11 +39,10 @@
   border-radius: 5px;
   background-color: rgb(128, 197, 186);
   margin: 5px;
-  padding-left: 30px;
+  padding: 0px 30px;
 }
-.staff-infor :hover {
+.staff-infor:hover {
   background-color: rgb(61, 111, 124);
-  cursor: pointer;
 }
 
 .staff-list {

@@ -25,8 +25,15 @@ function RenderStaffInfor({ choosenStaff }) {
           {choosenStaff !== null && (
             <div key={choosenStaff.id} className="containerinfor">
               <h5> Họ và tên: {choosenStaff.name}</h5>
-              <p> Ngày sinh : {choosenStaff.doB}</p>
-              <p> Ngày vào công ty:{choosenStaff.startDate}</p>
+              <p>
+                {" "}
+                Ngày sinh : {new Date(choosenStaff.doB).toLocaleDateString()}
+              </p>
+              <p>
+                {" "}
+                Ngày vào công ty:
+                {new Date(choosenStaff.startDate).toLocaleDateString()}
+              </p>
               <p> Phòng ban: {choosenStaff.department.name}</p>
               <p> Số ngày nghỉ còn lại: {choosenStaff.annualLeave}</p>
               <p> số ngày làm thêm: {choosenStaff.overTime}</p>
