@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavbarBrand, Collapse, NavItem } from "reactstrap";
+import { Nav, Navbar, NavbarBrand, Collapse, NavItem,Container } from "reactstrap";
 import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -28,13 +28,13 @@ class Header extends Component {
     return (
       <div>
         <Navbar dark expand="md">
-          <div className="container nav">
+          <Container className="container nav">
             <NavbarBrand onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
               <img className="nav" src="/funix-logo.png" alt="funix-logo" />
             </NavbarBrand>
 
-            <Collapse isOpen={this.state.isNavOpen} navbar>
+            <div isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem className="nav">
                   <NavLink className="nav-link" to="/nhanvien">
@@ -57,8 +57,8 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-            </Collapse>
-          </div>
+            </div>
+          </Container>
         </Navbar>
       </div>
     );

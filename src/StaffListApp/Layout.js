@@ -10,14 +10,13 @@ import Departments from "./department";
 import Payroll from "./payroll";
 import Liststaff from "./staffList";
 import Introduction from "./introduction";
-
 class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      STAFFS,
       choosenStaff: null,
     };
+
   }
 
   showInfo(item) {
@@ -25,18 +24,21 @@ class Layout extends Component {
   }
 
   render() {
-    console.log("this.state.STAFFS", this.state.STAFFS);
+    console.log("this.state.STAFFS", this.state.staffs);
 
     const StaffDetail = (props) => {
+      const staffs= JSON.parse( window.localStorage.getItem('staffNewList')) || STAFFS;
+      console.log('local',staffs)
       let { idNhanVien } = useParams();
       console.log("id nhan vien:", idNhanVien);
+      
       return (
         <StaffInfor
           staff={
-            this.state.STAFFS.filter(
-              (staff) => staff.id === parseInt(idNhanVien, 10)
-            )[0]
-          }
+            staffs.filter(
+              (staff) =>  parseInt(staff.id) === parseInt(idNhanVien, 10)
+            )[0]        
+          }          
         />
       );
     };

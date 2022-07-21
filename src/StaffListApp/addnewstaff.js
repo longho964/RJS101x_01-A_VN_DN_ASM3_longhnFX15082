@@ -12,7 +12,7 @@ import {
   ModalBody,
   ModalHeader,
 } from "reactstrap";
-import {  STAFFS } from "./staffs";
+import {  STAFFS, DEPARTMENTS } from "./staffs";
 
 class NewStaff extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class NewStaff extends Component {
         doB: "",
         salaryScale: "",
         startDate: "",
-        department: "",
+        department: { name:"", id:"", numberOfStaff: ""},
         annualLeave: "",
         overTime: "",
         image: "/assets/images/alberto.png",
@@ -63,9 +63,18 @@ class NewStaff extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    console.log("adf", target);
+
+    console.log("target", name, value);
+
+    let staffValue = value
+
+    if (name === 'department') {
+      const department = DEPARTMENTS.find(d => d.id === value)
+      staffValue  = department
+    }
+
     this.setState({
-        newmember: { ...this.state.newmember, [name]: value }
+        newmember: { ...this.state.newmember, [name]: staffValue }
         
     });
   }
@@ -74,6 +83,7 @@ class NewStaff extends Component {
     alert("Cureent State is:" + JSON.stringify(this.state.newmember));
     event.preventDefault();
     this.props.addNewStaff(this.state.newmember)
+    this.toggleForm()
   }
 
   
@@ -104,24 +114,39 @@ class NewStaff extends Component {
           console.log(STAFFS[a].id)
           console.log('id',id)
           errors.id = "Id nhân viên đã tồn tại ";
-        }
+        } 
       }
     }
 
-    if (this.state.touched.name && name.length < 3)
-      errors.name = " Name should be >3 charater";
+    if(this.state.touched.id && id==="") errors.id="Yêu cầu nhập Id"
 
-    if (this.state.touched.salaryScale && salaryScale > 8) {
+
+    if(this.state.touched.id && doB==="") errors.doB="Yêu cầu nhập"
+    if(this.state.touched.id && startDate==="") errors.startDate="Yêu cầu nhập"
+
+    if (this.state.touched.name && name.length < 3)
+      errors.name = " Tên phải có hơn 3 kí tự";
+      if (this.state.touched.name && name.length >30)
+      errors.name = "  Tên phải nhỏ hơn 30 kí tự";
+
+    if (this.state.touched.salaryScale && salaryScale > 3) {
       errors.salaryScale = "salaryScale <=8";
     } else if (this.state.touched.salaryScale && salaryScale < 0)
       errors.salaryScale = "salaryScale >0";
 
     if (this.state.touched.annualLeave && annualLeave > 12) {
-      errors.annualLeave = " only 12days off in a year ";
+      errors.annualLeave = " ngày nghỉ chỉ ít hơn 12 ngày trong năm ";
+    }
+    if (this.state.touched.annualLeave && annualLeave < 0) {
+      errors.annualLeave = " bạn đã sử dụng hết ngày nghỉ?"
     }
 
-    if (this.state.touched.overTime && overTime > 10) {
-      errors.overTime = " do not work more than 10 in month";
+    if (this.state.touched.overTime && overTime > 7) {
+      errors.overTime = " chỉ làm thêm không quá 7 ngày";
+    }
+    
+    if (this.state.touched.overTime && overTime <0) {
+      errors.overTime = " bạn không tăng ca?";
     }
 
     return errors;
@@ -140,7 +165,7 @@ class NewStaff extends Component {
     );
     return (
       <div>
-        <div>
+        <div style={{"margin":"10px 0px"}}>
           {" "}
           <Button color="danger" onClick={this.toggleForm}>
             Thêm Nhân Viên Mới{" "}
@@ -158,7 +183,7 @@ class NewStaff extends Component {
                   <Col md={8}>
                     {" "}
                     <Input
-                      type="text"
+                      type="number"
                       id="idmember"
                       name="id"
                       placeholder="ID"
@@ -264,14 +289,14 @@ class NewStaff extends Component {
                       onChange={this.handleInputChange}
                       valid={errors.department === ""}
                       invalid={errors.department !== ""}
-                      value={this.state.newmember.department}
+                      value={this.state.newmember.department.id}
                       onBlur={this.handleBlur("department")}
                     >
-                      <option>Sale</option>
-                      <option>HR</option>
-                      <option>Marketing</option>
-                      <option>IT</option>
-                      <option>Finance</option>
+                      <option value="Dept01">Sale</option>
+                      <option value="Dept02">HR</option>
+                      <option value="Dept03">Marketing</option>
+                      <option value="Dept04">IT</option>
+                      <option value="Dept05">Finance</option>
                     </Input>
                   </Col>
                 </FormGroup>

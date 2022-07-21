@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import {
-  Media,
-  
-} from "reactstrap";
+import { Media } from "reactstrap";
 import { STAFFS } from "./staffs";
 import { Link } from "react-router-dom";
 import Search from "./search";
@@ -11,8 +8,11 @@ import NewStaff from "./addnewstaff";
 class Liststaff extends Component {
   constructor(props) {
     super(props);
+    const initialStaff =JSON.parse(window.localStorage.getItem("staffNewList")) || STAFFS;
+   
+
     this.state = {
-      staffs: STAFFS,
+      staffs: initialStaff,
       id: "",
       name: "",
       dob: "",
@@ -25,33 +25,32 @@ class Liststaff extends Component {
     };
 
     this.toggleForm = this.toggleForm.bind(this);
-    this.filterStaff= this.filterStaff.bind(this)
-    this.addNewStaff=this.addNewStaff.bind(this)
+    this.filterStaff = this.filterStaff.bind(this);
+    this.addNewStaff = this.addNewStaff.bind(this);
   }
 
-  
   toggleForm() {
     this.setState({ openform: !this.state.openform });
   }
 
-  filterStaff(searchKeyWord){
-    const filter = STAFFS.filter(staff => {
-      return staff.name.toLowerCase().includes(searchKeyWord.toLowerCase())// toLowerCase chuyen ve chu thuong
-    })
-    this.setState({staffs: filter})
+  filterStaff(searchKeyWord) {
+    const filter = this.state.staffs.filter((staff) => {
+      return staff.name.toLowerCase().includes(searchKeyWord.toLowerCase()); // toLowerCase chuyen ve chu thuong
+    });
+    this.setState({ staffs: filter });
   }
 
-  addNewStaff(newstaff){
-    const addNewStaff=[...STAFFS,newstaff]
-    this.setState({staffs:addNewStaff})
+  addNewStaff(newstaff) {
+    const addNewStaff = [...this.state.staffs, newstaff];
+    this.setState({ staffs: addNewStaff });
+    window.localStorage.setItem("staffNewList", JSON.stringify(addNewStaff));
   }
 
   render() {
-
     const staffcompany = this.state.staffs.map((item) => {
       return (
         <div key={item.id} className="staff-list">
-          <Media tag="li" onClick={() => this.showInfo(item)}>
+          <Media tag="li">
             {" "}
             <Link exact to={`/nhanvien/${item.id} `}>
               <Media body className="ml-5">
@@ -67,12 +66,14 @@ class Liststaff extends Component {
     return (
       <div>
         <div className="container-form">
-        <NewStaff toggleForm={this.toggleForm} addNewStaff={this.addNewStaff} /> 
-        <Search filterStaff={this.filterStaff} />
-       </div>
+          <NewStaff
+            toggleForm={this.toggleForm}
+            addNewStaff={this.addNewStaff}
+          />
+          <Search filterStaff={this.filterStaff} />
+        </div>
 
-        
-        <h1 style={{ "text-align": "  center" }}>Nhân viên</h1>
+        <h1 style={{ "text-align": "  center" }}>Nhân Viên</h1>
         <div className="row-stafflist">{staffcompany}</div>
       </div>
     );

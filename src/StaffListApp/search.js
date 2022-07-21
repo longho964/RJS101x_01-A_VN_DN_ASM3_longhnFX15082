@@ -20,12 +20,13 @@ function Search(props){
         <div>
           <Form>
             <FormGroup row>
+            <Label htmlFor="search" md={3}>
+                <Button color="danger" onClick={handleSearch}>Search</Button>
+              </Label>
               <Col md={7}>
                 <Input onChange={handleOnChange} type="text" value={search} id="search" name="search" placeholder="Search..."/>
               </Col>
-              <Label htmlFor="search" md={3}>
-                <Button color="danger" onClick={handleSearch}>Search</Button>
-              </Label>
+              
             </FormGroup>
           </Form>
         </div>

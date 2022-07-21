@@ -1,17 +1,14 @@
 import React from "react";
-import { Card, CardImg } from "reactstrap";
 
 function RenderAvata({ staff }) {
   console.log("1111");
   return (
-    <div className="col-12 col-md-5 m-1">
-      <Card>
-        <CardImg
-          className="staffinfor-image"
-          src={staff.image}
-          alt={staff.name}
-        ></CardImg>
-      </Card>
+    <div className="">
+      <img
+        className="staffinfor-image"
+        src={staff.image}
+        alt={staff.name}
+      ></img>
     </div>
   );
 }
@@ -23,7 +20,7 @@ function RenderStaffInfor({ choosenStaff }) {
         <div className="infor-body">
           {" "}
           {choosenStaff !== null && (
-            <div key={choosenStaff.id} className="containerinfor">
+            <div key={choosenStaff.id} className="container-infor">
               <h5> Họ và tên: {choosenStaff.name}</h5>
               <p>
                 {" "}
@@ -49,10 +46,10 @@ const StaffInfor = (props) => {
   if (props.staff != null)
     return (
       <div className="row-staffinfor">
-        <div className="col-12 col-md-5 m-1">
+        <div className="">
           <RenderAvata staff={props.staff} />
         </div>
-        <div className="col-12 col-md-5 m-1">
+        <div>
           <RenderStaffInfor choosenStaff={props.staff} />
         </div>
       </div>
