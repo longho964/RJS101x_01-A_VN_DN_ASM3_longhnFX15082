@@ -10,10 +10,20 @@ import Departments from "./department";
 import Payroll from "./payroll";
 import Liststaff from "./staffList";
 import Introduction from "./introduction";
+import { connect } from "react-redux";
+
+
+const mapStateToProps = (state) => {
+  return {
+    staffs: state.staffs,   
+  };
+};
+
 class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      staffs: props.staffs,
       choosenStaff: null,
     };
 
@@ -27,16 +37,16 @@ class Layout extends Component {
     console.log("this.state.STAFFS", this.state.staffs);
 
     const StaffDetail = (props) => {
-      const staffs= JSON.parse( window.localStorage.getItem('staffNewList')) || STAFFS;
-      console.log('local',staffs)
+      // const staffs= JSON.parse( window.localStorage.getItem('staffNewList')) || STAFFS;
+      // console.log('local',staffs)
       let { idNhanVien } = useParams();
       console.log("id nhan vien:", idNhanVien);
       
       return (
         <StaffInfor
           staff={
-            staffs.filter(
-              (staff) =>  parseInt(staff.id) === parseInt(idNhanVien, 10)
+            this.props.staffs.filter(
+              (staffs) =>  parseInt(staffs.id) === parseInt(idNhanVien, 10)
             )[0]        
           }          
         />
@@ -62,4 +72,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default connect(mapStateToProps) (Layout);

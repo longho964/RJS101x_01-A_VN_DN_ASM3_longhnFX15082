@@ -4,15 +4,26 @@ import { STAFFS } from "./staffs";
 import { Link } from "react-router-dom";
 import Search from "./search";
 import NewStaff from "./addnewstaff";
+import { connect } from "react-redux";
+import { addNewStaff } from "../redux/actinonCreator";
+
+const mapStateToProps = (state) => {
+  return {
+    staffs: state.staffs,   
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff))
+})
 
 class Liststaff extends Component {
   constructor(props) {
+    console.log('props', props)
     super(props);
-    const initialStaff =JSON.parse(window.localStorage.getItem("staffNewList")) || STAFFS;
    
-
     this.state = {
-      staffs: initialStaff,
+      staffs: props.staffs,
       id: "",
       name: "",
       dob: "",
@@ -27,7 +38,9 @@ class Liststaff extends Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.filterStaff = this.filterStaff.bind(this);
     this.addNewStaff = this.addNewStaff.bind(this);
+
   }
+  
 
   toggleForm() {
     this.setState({ openform: !this.state.openform });
@@ -43,7 +56,7 @@ class Liststaff extends Component {
   addNewStaff(newstaff) {
     const addNewStaff = [...this.state.staffs, newstaff];
     this.setState({ staffs: addNewStaff });
-    window.localStorage.setItem("staffNewList", JSON.stringify(addNewStaff));
+    this.props.dispatchAddNewStaff(newstaff)
   }
 
   render() {
@@ -80,4 +93,4 @@ class Liststaff extends Component {
   }
 }
 
-export default Liststaff;
+export default connect(mapStateToProps,mapDispatchToProps)(Liststaff) ;
