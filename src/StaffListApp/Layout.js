@@ -11,6 +11,8 @@ import Payroll from "./payroll";
 import Liststaff from "./staffList";
 import Introduction from "./introduction";
 import { connect } from "react-redux";
+import { fetchStaffs } from "../redux/actinonCreator";
+
 
 
 const mapStateToProps = (state) => {
@@ -18,6 +20,11 @@ const mapStateToProps = (state) => {
     staffs: state.staffs,   
   };
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  // dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff)),
+  fetchStaffList: () => dispatch(fetchStaffs())
+})
 
 class Layout extends Component {
   constructor(props) {
@@ -29,6 +36,10 @@ class Layout extends Component {
 
   }
 
+  componentDidMount(){
+    this.props.fetchStaffList();
+  }
+  
   showInfo(item) {
     this.setState({ choosenStaff: item });
   }
@@ -45,7 +56,7 @@ class Layout extends Component {
       return (
         <StaffInfor
           staff={
-            this.props.staffs.filter(
+            this.props.staffs.staffs.filter(
               (staffs) =>  parseInt(staffs.id) === parseInt(idNhanVien, 10)
             )[0]        
           }          
@@ -72,4 +83,4 @@ class Layout extends Component {
   }
 }
 
-export default connect(mapStateToProps) (Layout);
+export default connect(mapStateToProps,mapDispatchToProps) (Layout);

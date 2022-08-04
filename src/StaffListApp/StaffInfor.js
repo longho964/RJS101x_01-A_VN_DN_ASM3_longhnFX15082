@@ -31,7 +31,7 @@ function RenderStaffInfor({ choosenStaff }) {
                 Ngày vào công ty:
                 {new Date(choosenStaff.startDate).toLocaleDateString()}
               </p>
-              <p> Phòng ban: {choosenStaff.department.name}</p>
+              <p> Phòng ban: {choosenStaff.departmentId}</p>
               <p> Số ngày nghỉ còn lại: {choosenStaff.annualLeave}</p>
               <p> số ngày làm thêm: {choosenStaff.overTime}</p>
             </div>

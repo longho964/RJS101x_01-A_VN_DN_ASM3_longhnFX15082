@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Media } from "reactstrap";
-import { STAFFS } from "./staffs";
 import { Link } from "react-router-dom";
 import Search from "./search";
 import NewStaff from "./addnewstaff";
 import { connect } from "react-redux";
-import { addNewStaff } from "../redux/actinonCreator";
+import { fetchStaffs } from "../redux/actinonCreator";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +13,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff))
+  // dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff)),
+  fetchStaffList: () => dispatch(fetchStaffs())
 })
 
 class Liststaff extends Component {
@@ -40,6 +40,9 @@ class Liststaff extends Component {
     this.addNewStaff = this.addNewStaff.bind(this);
 
   }
+  componentDidMount(){
+    this.props.fetchStaffList();
+  }
   
 
   toggleForm() {
@@ -60,7 +63,7 @@ class Liststaff extends Component {
   }
 
   render() {
-    const staffcompany = this.state.staffs.map((item) => {
+    const staffcompany = this.props.staffs.staffs.map((item) => {
       return (
         <div key={item.id} className="staff-list">
           <Media tag="li">

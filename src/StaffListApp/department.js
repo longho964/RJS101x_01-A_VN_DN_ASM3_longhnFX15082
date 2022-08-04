@@ -1,20 +1,35 @@
 import React, { Component } from "react";
-import { DEPARTMENTS } from "./staffs";
 import { Media } from "reactstrap";
+import { fetchDepartment } from "../redux/actinonCreator";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    departments: state.departments
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchDepart: () => dispatch(fetchDepartment())
+})
 
 class Departments extends Component {
   constructor(props) {
     super(props);
-    this.state = { DEPARTMENTS, choosenDepart: null };
+    this.state = {departments: props.departments, choosenDepart: null };
   }
 
   showDepart(depart) {
     this.setState({ choosenDepart: depart });
   }
 
+  componentDidMount(){
+    this.props.fetchDepart();
+  }
+
   render() {
     console.log("try");
-    const staffDepartment = this.state.DEPARTMENTS.map((depart) => {
+    const staffDepartment = this.props.departments.departments.map((depart) => {
       return (
         <div key={depart.id} className="department">
           <Media body className="ml-5">
@@ -33,4 +48,4 @@ class Departments extends Component {
     );
   }
 }
-export default Departments;
+export default connect(mapStateToProps,mapDispatchToProps) (Departments);

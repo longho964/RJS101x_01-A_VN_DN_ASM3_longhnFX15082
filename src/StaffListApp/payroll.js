@@ -1,20 +1,35 @@
 import React, { Component } from "react";
-import { STAFFS } from "./staffs";
 import { Media } from "reactstrap";
+import { fetchPayroll } from "../redux/actinonCreator";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    payroll: state.payroll
+  }
+} 
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchPayroll: () => dispatch(fetchPayroll())
+})
 
 class Payroll extends Component {
   constructor(props) {
     super(props);
-    this.state = { STAFFS, choosenDepart: null };
+    this.state = { payroll: props.payroll, choosenDepart: null };
   }
 
   showDepart(pay) {
     this.setState({ choosenDepart: pay });
   }
 
+  componentDidMount(){
+    this.props.fetchPayroll();
+  }
+
   render() {
     console.log("try");
-    const payRoll = this.state.STAFFS.map((pay) => {
+    const payRoll = this.props.payroll.payroll.map((pay) => {
       const wage = [pay.salaryScale * 3000000 + pay.overTime * 2000000];
       return (
         <div key={pay.id} className="staff-infor">
@@ -37,4 +52,4 @@ class Payroll extends Component {
     );
   }
 }
-export default Payroll;
+export default connect(mapStateToProps,mapDispatchToProps) (Payroll);
