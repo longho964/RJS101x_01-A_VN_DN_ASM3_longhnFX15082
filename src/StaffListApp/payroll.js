@@ -28,7 +28,6 @@ class Payroll extends Component {
   }
 
   render() {
-    console.log("try");
     const payRoll = this.props.payroll.payroll.map((pay) => {
       const wage = [pay.salaryScale * 3000000 + pay.overTime * 2000000];
       return (

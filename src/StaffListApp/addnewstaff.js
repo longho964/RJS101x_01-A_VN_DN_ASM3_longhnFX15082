@@ -22,13 +22,13 @@ class NewStaff extends Component {
       
       newmember: {
         id: "",
-        name: "",
-        doB: "",
-        salaryScale: "",
-        startDate: "",
+        name: "long",
+        doB: "2022-08-12",
+        salaryScale: "2",
+        startDate: "2022-08-12",
         department: { name:"", id:"", numberOfStaff: ""},
-        annualLeave: "",
-        overTime: "",
+        annualLeave: "2",
+        overTime: "2",
         image: "/assets/images/alberto.png",
       },
       openform: false,
@@ -64,7 +64,6 @@ class NewStaff extends Component {
     const value = target.value;
     const name = target.name;
 
-    console.log("target", name, value);
 
     let staffValue = value
 
@@ -111,8 +110,7 @@ class NewStaff extends Component {
     if (this.state.touched.id ) {
       for (let a = 0; a < STAFFS.length; a++) {
         if (id == STAFFS[a].id) {
-          console.log(STAFFS[a].id)
-          console.log('id',id)
+         
           errors.id = "Id nhân viên đã tồn tại ";
         } 
       }

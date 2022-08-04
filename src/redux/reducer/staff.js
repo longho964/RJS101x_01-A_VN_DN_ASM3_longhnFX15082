@@ -7,17 +7,16 @@ export const Staffs = (state = {
 },action) =>{
     switch( action.type){
         case ActionTypes.INIT_STAFFS:
-            console.log('INIT_STAFFS:', action.payload)
             return {...state, isLoading:false, errMess: null,staffs:action.payload }
 
         case ActionTypes.STAFF_LOADING:
-            console.log('STAFF_LOADING:', action.payload)
             return {...state, isLoading:true, errMess: null,staffs:[] }
 
         case ActionTypes.STAFF_FAILED:
-            console.log('STAFF_FAILED:', action.payload)
             return {...state, isLoading:false, errMess: action.payload,staffs:[] }
-        
+
+        case ActionTypes.ADD_STAFF:
+                return {...state,staffs: [...state.staffs, action.payload]}
         default:
             return state;
     }

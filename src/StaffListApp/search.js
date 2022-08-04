@@ -6,7 +6,6 @@ function Search(props){
     const [search, setSearch] = useState("");
 
     const handleOnChange= (e)=>{
-        console.log("e",e)
         setSearch(e.target.value)
     }
 

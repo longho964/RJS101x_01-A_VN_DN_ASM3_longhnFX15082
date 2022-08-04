@@ -1,7 +1,6 @@
 import React from "react";
 
 function RenderAvata({ staff }) {
-  console.log("1111");
   return (
     <div className="">
       <img

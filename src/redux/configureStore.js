@@ -4,14 +4,15 @@ import thunk from 'redux-thunk';
 import { Staffs } from './reducer/staff';
 import { Departments } from './reducer/department';
 import { Payroll } from './reducer/payroll';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 export const configureStore = () => {
   const rootReducer = combineReducers({
     staffs: Staffs,
     departments: Departments,
     payroll: Payroll
+    
   })
-  const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk,logger)));
+  const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
   return store;
 };

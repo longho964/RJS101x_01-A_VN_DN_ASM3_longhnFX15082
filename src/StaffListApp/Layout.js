@@ -44,11 +44,8 @@ class Layout extends Component {
   }
 
   render() {
-    console.log("this.state.STAFFS", this.state.staffs);
-
     const StaffDetail = (props) => {
       let { idNhanVien } = useParams();
-      console.log("id nhan vien:", idNhanVien);
       
       return (
         <StaffInfor
@@ -68,7 +65,6 @@ class Layout extends Component {
         (department) => department.departmentId === idDepartment
       );
 
-      console.log('logaaaaaaa ', staffs)
       const render=staffs.map( staff => {
         return (
           <div>

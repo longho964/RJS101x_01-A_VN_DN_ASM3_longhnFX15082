@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Search from "./search";
 import NewStaff from "./addnewstaff";
 import { connect } from "react-redux";
-import { fetchStaffs } from "../redux/actinonCreator";
+import { addNewStaff } from "../redux/actinonCreator";
 
 const mapStateToProps = (state) => {
   return {
@@ -13,13 +13,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  // dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff)),
-  fetchStaffList: () => dispatch(fetchStaffs())
+  dispatchAddNewStaff: (newstaff) => dispatch(addNewStaff(newstaff)),
 })
 
 class Liststaff extends Component {
   constructor(props) {
-    console.log('props', props)
     super(props);
    
     this.state = {
@@ -38,12 +36,20 @@ class Liststaff extends Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.filterStaff = this.filterStaff.bind(this);
     this.addNewStaff = this.addNewStaff.bind(this);
-
+    // this.postStaff= this.postStaff.bind(this);
   }
+
   componentDidMount(){
-    this.props.fetchStaffList();
+    console.log('componentDidMount')
   }
   
+  componentDidUpdate(){
+    console.log('componentDidUpdate')
+  }
+
+  componentWillUnmount(){
+    console.log('componentWillUnmount')
+  }
 
   toggleForm() {
     this.setState({ openform: !this.state.openform });
@@ -57,7 +63,7 @@ class Liststaff extends Component {
   }
 
   addNewStaff(newstaff) {
-    const addNewStaff = [...this.state.staffs, newstaff];
+    const addNewStaff = [...this.state.staffs.staffs, newstaff];
     this.setState({ staffs: addNewStaff });
     this.props.dispatchAddNewStaff(newstaff)
   }

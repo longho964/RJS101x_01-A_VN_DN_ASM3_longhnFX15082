@@ -1,11 +1,32 @@
 import { baseUrl1,baseUrlDepartment,baseUrlPayroll } from "../server/hostlink";
 import * as ActionTypes from "./actionTypes";
 
-// export const addNewStaff = (newstaff) => ({
-//   type: ActionTypes.ADD_STAFF,
-//   payload: newstaff,
-// });
+// action add new staff
+export const addNewStaff = (newstaff) => ({
+  type: ActionTypes.ADD_STAFF,
+  payload: newstaff,
+});
 
+// export const postNewStaff =(newstaff) => (dispatch) =>{
+//     return fetch(baseUrl1)
+//     .then((response) => {
+//       if (response.ok) {
+//         return response;
+//       } else {
+//         let error = new Error(
+//           "Error" + response.status + ":" + response.statusText
+//         );
+//         error.response = response;
+//         throw error;
+//       }
+//     })
+//     .then((response) => response.json())
+//     .then((response) => {
+//         console.log('response',response)
+//         dispatch(addNewStaff(response))
+//     })
+//     .catch((error) => alert(" SOS..." + error.message));
+// };
 
 // action to staffs
 export const initStaffs = (staffs) => ({
@@ -33,7 +54,6 @@ export const fetchStaffs = () => (dispatch) => {
     })
     .then((response) => response.json())
     .then((response) => {
-        console.log('response',response)
         dispatch(initStaffs(response))
     })
     .catch((error) => alert(" SOS..." + error.message));
@@ -66,7 +86,6 @@ export const fetchDepartment = () => (dispatch) => {
     })
     .then((response) => response.json())
     .then((response) => {
-        console.log('response',response)
         dispatch(initDepartment(response))
     })
     .catch((error) => alert(" SOS..." + error.message));
@@ -98,7 +117,6 @@ export const fetchPayroll = () => (dispatch) => {
     })
     .then((response) => response.json())
     .then((response) => {
-        console.log('response',response)
         dispatch(initPayroll(response))
     })
     .catch((error) => alert(" SOS..." + error.message));
