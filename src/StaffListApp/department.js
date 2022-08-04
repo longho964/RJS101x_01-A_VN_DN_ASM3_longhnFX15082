@@ -2,28 +2,29 @@ import React, { Component } from "react";
 import { Media } from "reactstrap";
 import { fetchDepartment } from "../redux/actinonCreator";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
-    departments: state.departments
-  }
-}
+    departments: state.departments,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchDepart: () => dispatch(fetchDepartment())
-})
+  fetchDepart: () => dispatch(fetchDepartment()),
+});
 
 class Departments extends Component {
   constructor(props) {
     super(props);
-    this.state = {departments: props.departments, choosenDepart: null };
+    this.state = { departments: props.departments, choosenDepart: null };
   }
 
   showDepart(depart) {
     this.setState({ choosenDepart: depart });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchDepart();
   }
 
@@ -32,10 +33,15 @@ class Departments extends Component {
     const staffDepartment = this.props.departments.departments.map((depart) => {
       return (
         <div key={depart.id} className="department">
-          <Media body className="ml-5">
-            <h1 heading>{depart.name}</h1>
-            <Media heading>Số lượng nhân viên:{depart.numberOfStaff}</Media>
-          </Media>{" "}
+          <Media tag="li">
+            {" "}
+            <Link exact to={`/phongban/${depart.id} `}>
+              <Media body className="ml-5">
+                <h1 heading>{depart.name}</h1>
+                <Media heading>Số lượng nhân viên:{depart.numberOfStaff}</Media>
+              </Media>{" "}
+            </Link>
+          </Media>
         </div>
       );
     });
@@ -48,4 +54,4 @@ class Departments extends Component {
     );
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps) (Departments);
+export default connect(mapStateToProps, mapDispatchToProps)(Departments);

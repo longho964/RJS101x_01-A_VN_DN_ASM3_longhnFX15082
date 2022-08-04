@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { STAFFS } from "./staffs";
 import "../App";
 import { Route, Routes, useParams } from "react-router-dom";
 
@@ -13,11 +12,10 @@ import Introduction from "./introduction";
 import { connect } from "react-redux";
 import { fetchStaffs } from "../redux/actinonCreator";
 
-
-
 const mapStateToProps = (state) => {
   return {
     staffs: state.staffs,   
+    departments: state.departments
   };
 };
 
@@ -31,6 +29,7 @@ class Layout extends Component {
     super(props);
     this.state = {
       staffs: props.staffs,
+      departments: props.departments,
       choosenStaff: null,
     };
 
@@ -48,8 +47,6 @@ class Layout extends Component {
     console.log("this.state.STAFFS", this.state.staffs);
 
     const StaffDetail = (props) => {
-      // const staffs= JSON.parse( window.localStorage.getItem('staffNewList')) || STAFFS;
-      // console.log('local',staffs)
       let { idNhanVien } = useParams();
       console.log("id nhan vien:", idNhanVien);
       
@@ -64,6 +61,25 @@ class Layout extends Component {
       );
     };
 
+    const StaffInDepartments = (props) => {
+      let {idDepartment} = useParams();
+
+      const staffs = this.props.staffs.staffs.filter(
+        (department) => department.departmentId === idDepartment
+      );
+
+      console.log('logaaaaaaa ', staffs)
+      const render=staffs.map( staff => {
+        return (
+          <div>
+          <StaffInfor staff= {staff} />
+          </div>                
+      )
+      })
+      return render
+     
+    }
+
     return (
       <div className="container">
         <h1 className="application"> FUNIX REACT COMPANY</h1>
@@ -74,6 +90,8 @@ class Layout extends Component {
           <Route path="/nhanvien/:idNhanVien" element={<StaffDetail />} />
 
           <Route exact path="/phongban" element={<Departments />} />
+          <Route exact path="/phongban/:idDepartment" element={<StaffInDepartments />} />
+
           <Route exact path="/bangluong/*" element={<Payroll />} />
         </Routes>
 
