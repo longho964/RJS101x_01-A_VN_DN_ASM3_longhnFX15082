@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Media } from "reactstrap";
 import { fetchPayroll } from "../redux/actinonCreator";
 import { connect } from "react-redux";
+// import { FadeTransform } from 'react-animation-components';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -31,6 +33,7 @@ class Payroll extends Component {
     const payRoll = this.props.payroll.payroll.map((pay) => {
       const wage = [pay.salaryScale * 3000000 + pay.overTime * 2000000];
       return (
+        
         <div key={pay.id} className="staff-infor">
           <Media body className="ml-5">
             <h1 className="staff-infor-name">{pay.name}</h1>

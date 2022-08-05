@@ -12,6 +12,9 @@ import Introduction from "./introduction";
 import { connect } from "react-redux";
 import { fetchStaffs } from "../redux/actinonCreator";
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+
 const mapStateToProps = (state) => {
   return {
     staffs: state.staffs,   
@@ -80,7 +83,10 @@ class Layout extends Component {
       <div className="container">
         <h1 className="application"> FUNIX REACT COMPANY</h1>
         <Header />
-        <Routes>
+        {/* <TransitionGroup>
+        <CSSTransition key={this.props.location} classNames="page" timeout={300}> */}
+
+        <Routes location={this.props.location}>
           <Route exact path="/" element={<Introduction />} />
           <Route exact path="/nhanvien" element={<Liststaff />} />
           <Route path="/nhanvien/:idNhanVien" element={<StaffDetail />} />
@@ -90,6 +96,9 @@ class Layout extends Component {
 
           <Route exact path="/bangluong/*" element={<Payroll />} />
         </Routes>
+        {/* </CSSTransition>
+
+        </TransitionGroup> */}
 
         <Footer />
       </div>

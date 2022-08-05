@@ -16,7 +16,13 @@ export const Staffs = (state = {
             return {...state, isLoading:false, errMess: action.payload,staffs:[] }
 
         case ActionTypes.ADD_STAFF:
-                return {...state,staffs: [...state.staffs, action.payload]}
+            return {...state, staffs: [...state.staffs, action.payload]}
+
+        case ActionTypes.DELETE_STAFF:
+            const idDeleteLocation = state.staffs.findIndex((staff) => staff.id === action.payload);
+            let newArrStaff = state.staffs
+            const deletedArr = newArrStaff.splice(idDeleteLocation,1)
+            return {...state, staffs:newArrStaff}        
         default:
             return state;
     }

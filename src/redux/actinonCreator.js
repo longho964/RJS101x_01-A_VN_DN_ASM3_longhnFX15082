@@ -7,26 +7,12 @@ export const addNewStaff = (newstaff) => ({
   payload: newstaff,
 });
 
-// export const postNewStaff =(newstaff) => (dispatch) =>{
-//     return fetch(baseUrl1)
-//     .then((response) => {
-//       if (response.ok) {
-//         return response;
-//       } else {
-//         let error = new Error(
-//           "Error" + response.status + ":" + response.statusText
-//         );
-//         error.response = response;
-//         throw error;
-//       }
-//     })
-//     .then((response) => response.json())
-//     .then((response) => {
-//         console.log('response',response)
-//         dispatch(addNewStaff(response))
-//     })
-//     .catch((error) => alert(" SOS..." + error.message));
-// };
+export const deleteStaff = (staffId) => ({
+  type: ActionTypes.DELETE_STAFF,
+  payload: staffId,
+});
+
+
 
 // action to staffs
 export const initStaffs = (staffs) => ({

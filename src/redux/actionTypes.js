@@ -1,4 +1,5 @@
 export const ADD_STAFF = 'ADD_STAFF';
+export const DELETE_STAFF = 'DELETE_STAFF'
 
 //action staff
 export const STAFF_LOADING = 'STAFF_LOADING';
